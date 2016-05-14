@@ -1,15 +1,14 @@
 'use strict';
+const Globals = require('./server-variables');
 const app = require('http').createServer()
 const io = require('socket.io')(app);
 const fs = require('fs');
 
-const players = {};
-let visits = 0;
-
 app.listen(1337);
 
 io.on('connection', function (socket) {
-  const _players = Object.keys(players).map(key => obj[key]);
+  console.log(Globals.players);
+  const _players = Object.keys(Globals.players).map(key => Globals.players[key]);
 
   socket.emit('PLAYERS_LIST', _players);
 
@@ -18,22 +17,22 @@ io.on('connection', function (socket) {
   });
 
   socket.on('disconnect', function() {
-    if(players[socket.id]) {
+    if(Globals.players[socket.id]) {
       io.emit('PLAYER_LEAVE', {
-        id: players[socket.id].id
+        id: Globals.players[socket.id].id
       });
     }
   });
 
   socket.on('USER_LOGIN', function(userdata) {
-    visits++;
+    Globals.visits++;
 
-    players[socket.id] = {
-      id: visits,
+    Globals.players[socket.id] = {
+      id: Globals.visits,
       username: userdata.username,
       score: 1000
     };
 
-    io.emit('PLAYER_JOIN', players[socket.id]);
+    io.emit('PLAYER_JOIN', Globals.players[socket.id]);
   });
 });
