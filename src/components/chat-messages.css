@@ -1,7 +1,8 @@
 :host {
     background: #19191A;
-    height: 23rem;
-    overflow: scroll;
+    display: block;
+    overflow-y: scroll;
+    height: 21.5rem;
 }
 
 :host .username {

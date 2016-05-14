@@ -1,6 +1,6 @@
 import {NgRedux} from 'ng2-redux';
 import {IAppState} from '../app-state';
-import {Component} from '@angular/core';
+import {Component, ElementRef} from '@angular/core';
 import {DicesChatMessageComponent} from './chat-message';
 
 @Component({
@@ -17,8 +17,16 @@ import {DicesChatMessageComponent} from './chat-message';
 export class DicesChatMessagesComponent {
     messages: Array<Object> = [];
 
-    constructor(ngRedux: NgRedux<IAppState>) {
+    constructor(
+        ngRedux: NgRedux<IAppState>,
+        elementRef: ElementRef
+    ) {
         ngRedux.select(n => n.chat.get('messages'))
-            .subscribe((messages: any) => { this.messages = messages.toJS(); });
+            .subscribe((messages: any) => {
+                this.messages = messages.toJS();
+                setTimeout(() => {
+                    elementRef.nativeElement.scrollTop = elementRef.nativeElement.scrollHeight;
+                }, 0);
+            });
     }
 }
