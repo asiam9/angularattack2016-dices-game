@@ -16,7 +16,7 @@ io.on('connection', function (socket) {
     if(!Globals.players[socket.id]) return;
 
     io.emit('CHAT_MESSAGE_IN', {
-      username: Globals.players[socket.id].nickname,
+      username: Globals.players[socket.id].username,
       body: message.body
     });
   });

@@ -10,18 +10,25 @@ import {IAppState} from '../app-state';
     styles: [require('./winloose-bar.css')]
 })
 export class DicesWinLooseBarComponent {
-    private status;
-    private cssClass;
+    private status: string;
+    private cssClass: string;
 
     constructor(ngRedux: NgRedux<IAppState>) {
-        ngRedux.select(n => n.dices.getIn(['results', 'winners']))
-            .subscribe(winners => {
-                if (winners) {
-                    this.cssClass = 'win';
-                    this.status = 'You WIN!';
-                } else {
-                    this.cssClass = 'lost';
-                    this.status = 'Sorry, not this time.. Try again!';
+        ngRedux.select(n => n.dices.get('status'))
+            .subscribe((status:any) => {
+                switch (status) {
+                    case 'WIN':
+                    {
+                        this.cssClass = 'win';
+                        this.status = 'You WIN!';
+                        break;
+                    }
+                    case 'LOST':
+                    {
+                        this.cssClass = 'lost';
+                        this.status = 'Sorry, not this time.. Try again!';
+                        break;
+                    }
                 }
             });
     }
