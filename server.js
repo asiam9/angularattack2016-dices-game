@@ -41,4 +41,3 @@ io.on('connection', function (socket) {
     Globals.bets[socket.id] = bet.diceValue;
   });
 });
-

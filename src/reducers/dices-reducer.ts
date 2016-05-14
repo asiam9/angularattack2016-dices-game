@@ -18,7 +18,7 @@ function dices(state = INITIAL_STATE, action: any = { type: '' }) {
         }
 
         case DICES_RESULTS: {
-            return state.merge({ results: action.payload.results });
+            return state.merge({ selectedDice: 0, diceBet: 0, results: action.payload.results });
         }
 
         default: return state;

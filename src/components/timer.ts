@@ -19,7 +19,7 @@ export class DicesTimerComponent {
 
             if(this.endAt) {
                 const endAt = new Date(this.endAt).getTime();
-                this.timer = endAt - currentTime;
+                this.timer = Math.round((endAt - currentTime) / 1000);
             }
 
         }, 1000);
@@ -30,3 +30,4 @@ export class DicesTimerComponent {
             });
     }
 }
+
