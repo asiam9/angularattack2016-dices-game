@@ -8,9 +8,10 @@
     display:flex;
     justify-content:center;
     align-items:center;
+    z-index: 6666;
 }
 
-:host .form {
+:host form {
     background: white;
     padding: 2rem;
 }

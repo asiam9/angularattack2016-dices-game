@@ -1,0 +1,9 @@
+:host .option {
+    display: inline-block;
+    padding: 2rem;
+    border-radius: 100%;
+}
+
+:host .option.active {
+    background: #82BF00;
+}

@@ -4,10 +4,10 @@ import {UserService} from '../services/user-service';
 @Component({
     selector: 'login-form',
     template: `
-        <div class="form">
+        <form (submit)="login()">
             <input type="text" [(ngModel)]="username" placeholder="Type Your nickname..." />
-            <button (click)="login()">START</button>
-        </div>
+            <button type="submit">START</button>
+        </form>
     `,
     styles: [require('./login-form.css')]
 })
@@ -20,4 +20,3 @@ export class DicesLoginFormComponent {
         this.userService.login(this.username);
     }
 }
-

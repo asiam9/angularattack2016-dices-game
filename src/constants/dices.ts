@@ -1,0 +1,1 @@
+export const DICES_SELECT_DICE = 'App/DICES/SELECT_DICE';
