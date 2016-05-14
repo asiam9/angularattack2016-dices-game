@@ -1,0 +1,174 @@
+:host {
+    width: 64px;
+    height: 64px;
+    background: white;
+    border-radius: .75rem;
+    margin: 1rem;
+    display: inline-block;
+    overflow: hidden;
+}
+
+:host .dice {
+    position: relative;
+}
+
+:host .dice:after {
+    content: '';
+    background: rgba(0,0,0,.35);
+    transform: rotateZ(45deg);
+    top: 0;
+    left: 12px;
+    position: absolute;
+    z-index: 1;
+    width: 64px;
+    height: 128px;
+}
+
+:host .dice i {
+    z-index: 2;
+    display: none;
+    width: 12px;
+    height: 12px;
+    background: #000;
+    position: absolute;
+    border-radius: .5rem;
+}
+
+/* 1 */
+
+:host .dice-1 .dot-1 {
+    display: block;
+    top: 26px;
+    left: 26px;
+}
+
+/* 2 */
+
+:host .dice-2 .dot-1 {
+    display: block;
+    top: 8px;
+    left: 8px;
+}
+
+:host .dice-2 .dot-2 {
+    display: block;
+    top: 44px;
+    left: 44px;
+}
+
+/* 3 */
+
+:host .dice-3 .dot-1 {
+    display: block;
+    top: 8px;
+    left: 8px;
+}
+
+:host .dice-3 .dot-2 {
+    display: block;
+    top: 26px;
+    left: 26px;
+}
+
+:host .dice-3 .dot-3 {
+    display: block;
+    top: 44px;
+    left: 44px;
+}
+
+/* 4 */
+
+:host .dice-4 .dot-1 {
+    display: block;
+    top: 8px;
+    left: 8px;
+}
+
+:host .dice-4 .dot-2 {
+    display: block;
+    top: 44px;
+    left: 44px;
+}
+
+:host .dice-4 .dot-3 {
+    display: block;
+    top: 8px;
+    left: 44px;
+}
+
+:host .dice-4 .dot-4 {
+    display: block;
+    top: 44px;
+    left: 8px;
+}
+
+/* 5 */
+
+:host .dice-5 .dot-1 {
+    display: block;
+    top: 8px;
+    left: 8px;
+}
+
+:host .dice-5 .dot-2 {
+    display: block;
+    top: 44px;
+    left: 44px;
+}
+
+:host .dice-5 .dot-3 {
+    display: block;
+    top: 8px;
+    left: 44px;
+}
+
+:host .dice-5 .dot-4 {
+    display: block;
+    top: 44px;
+    left: 8px;
+}
+
+:host .dice-5 .dot-5 {
+    display: block;
+    top: 26px;
+    left: 26px;
+}
+
+
+/* 6 */
+
+:host .dice-6 .dot-1 {
+    display: block;
+    top: 8px;
+    left: 8px;
+}
+
+:host .dice-6 .dot-2 {
+    display: block;
+    top: 44px;
+    left: 44px;
+}
+
+:host .dice-6 .dot-3 {
+    display: block;
+    top: 8px;
+    left: 44px;
+}
+
+:host .dice-6 .dot-4 {
+    display: block;
+    top: 44px;
+    left: 8px;
+}
+
+:host .dice-6 .dot-5 {
+    display: block;
+    top: 26px;
+    left: 8px;
+}
+
+:host .dice-6 .dot-6 {
+    display: block;
+    top: 26px;
+    left: 44px;
+}
