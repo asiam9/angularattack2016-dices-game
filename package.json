@@ -2,8 +2,12 @@
   "name": "angular2-quickstart",
   "version": "1.0.0",
   "scripts": {
-    "start": "npm run lite",
-    "lite": "lite-server"
+    "clean": "rimraf dist/",
+    "typings": "typings install",
+    "dev": "webpack-dev-server -d --inline --progress --no-info",
+    "postinstall": "npm run typings",
+    "build": "webpack",
+    "publish": "surge ./dist"
   },
   "license": "ISC",
   "dependencies": {
@@ -20,10 +24,25 @@
     "rxjs": "5.0.0-beta.6",
     "zone.js": "0.6.12",
     "angular2-in-memory-web-api": "0.0.7",
-    "bootstrap": "^3.3.6"
-  },
-  "devDependencies": {
-    "concurrently": "^2.0.0",
-    "lite-server": "^2.2.0"
+    "core-js": "^2.4.0",
+    "css-loader": "^0.23.1",
+    "es6-shim": "^0.35.0",
+    "file-loader": "^0.8.5",
+    "html-webpack-plugin": "^2.16.1",
+    "immutable": "^3.8.1",
+    "ng2-redux": "^2.3.1",
+    "raw-loader": "^0.5.1",
+    "redux": "^3.5.2",
+    "redux-logger": "^2.6.1",
+    "redux-thunk": "^2.1.0",
+    "rimraf": "^2.5.2",
+    "to-string-loader": "^1.1.4",
+    "ts-helpers": "^1.1.1",
+    "ts-loader": "^0.8.2",
+    "typescript": "^1.8.10",
+    "typings": "^0.8.1",
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-split-by-path": "0.0.8"
   }
 }
