@@ -5,7 +5,7 @@ const io = require('socket.io')(app);
 const fs = require('fs');
 const Heartbeat = require('./server-heartbeat')(io);
 
-app.listen(1337);
+app.listen(1338);
 
 io.on('connection', function (socket) {
   const _players = Object.keys(Globals.players).map(key => Globals.players[key]);
