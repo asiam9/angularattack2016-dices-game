@@ -4,20 +4,22 @@ import {DicesComponent} from './containers/dices';
 import {DicesAsideComponent} from './containers/aside';
 import {DicesLoginFormComponent} from './components/login-form';
 import {DicesChooseDiceComponent} from './containers/choose-dice';
+import {DicesTimerComponent} from './components/timer';
 import {NgRedux} from 'ng2-redux';
 import {IAppState} from './app-state';
 
 @Component({
     selector: 'my-app',
     directives: [DicesComponent, DicesChatComponent, DicesAsideComponent, DicesLoginFormComponent,
-        DicesChooseDiceComponent],
+        DicesChooseDiceComponent, DicesTimerComponent],
     template: `
         <dices-aside></dices-aside>
         <dices></dices>
         <dices-chat></dices-chat>
         <dices-choose-dice></dices-choose-dice>
-        <p><button (click)="showLoginModal()">START GAME!</button></p>
+        <p *ngIf="!userdata.username"><button (click)="showLoginModal()">START GAME!</button></p>
         <login-form *ngIf="loginModal && !userdata.username"></login-form>
+        <dices-timer></dices-timer>
     `,
     encapsulation: ViewEncapsulation.None
 })

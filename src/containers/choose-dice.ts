@@ -4,6 +4,7 @@ import {DicesDiceComponent} from "../components/dice";
 import {IAppState} from '../app-state';
 import {NgRedux} from 'ng2-redux';
 import {DICES_SELECT_DICE} from '../constants/dices';
+import {DicesService} from '../services/dices-service';
 
 @Component({
     selector: 'dices-choose-dice',
@@ -14,28 +15,41 @@ import {DICES_SELECT_DICE} from '../constants/dices';
             [ngClass]="{ active: checkIsActive(diceValue) }">
             <dice value="{{diceValue}}"></dice>
         </div>
+        <button (click)="betAtDice()">BET</button>
     `,
     styles: [require('./choose-dice.css')]
 })
 export class DicesChooseDiceComponent {
     private dicesValues = [1, 2, 3, 4, 5, 6];
     private selectedDice;
+    private diceBet;
 
-    constructor(private ngRedux: NgRedux<IAppState>) {
+    constructor(
+        private ngRedux: NgRedux<IAppState>,
+        private dicesService: DicesService
+    ) {
         this.ngRedux.select(n => n.dices.get('selectedDice'))
-            .subscribe((selectedDice: any) => { this.selectedDice = selectedDice; });
+            .subscribe((selectedDice: Number) => { this.selectedDice = selectedDice; });
+
+        this.ngRedux.select(n => n.dices.get('diceBet'))
+            .subscribe((diceBet: Number) => { this.diceBet = diceBet; });
     }
 
     checkIsActive(diceValue) {
         return this.selectedDice == diceValue;
     }
-
     chooseDice(diceValue) {
+        if(this.diceBet) return false;
+
         this.ngRedux.dispatch({
             type: DICES_SELECT_DICE,
             payload: {
                 diceValue
             }
-        })
+        });
+    }
+
+    betAtDice() {
+        this.dicesService.betAtDice(this.selectedDice);
     }
 }
