@@ -1,34 +1,15 @@
-import {NgRedux} from 'ng2-redux';
-import {IAppState} from '../app-state';
 import {Component} from '@angular/core';
 import {DicesChatMessageComponent} from '../components/chat-message';
-import {ChatService} from '../services/chat-service';
+import {DicesChatFormComponent} from '../components/chat-form';
+import {DicesChatMessagesComponent} from '../components/chat-messages';
 
 @Component({
     selector: 'dices-chat',
-    directives: [DicesChatMessageComponent],
+    directives: [DicesChatMessageComponent, DicesChatFormComponent, DicesChatMessagesComponent],
     template: `
-        <dices-chat-message *ngFor="let message of messages">
-            {{ message.body }}
-        </dices-chat-message>
-        <input type="text" [(ngModel)]="message" />
-        <button (click)="sendMessage()">SEND_MESSAGE</button>
-    `
+        <dices-chat-messages></dices-chat-messages>
+        <dices-chat-form></dices-chat-form>
+    `,
+    styles: [require('./chat-component.css')]
 })
-export class DicesChatComponent {
-    message: string = '';
-    messages: Array<Object> = [];
-
-    constructor(
-        ngRedux: NgRedux<IAppState>,
-        private chatService: ChatService
-    ) {
-        ngRedux.select(n => n.chat.get('messages'))
-            .subscribe((messages: any) => { this.messages = messages.toJS(); });
-    }
-
-    sendMessage() {
-        this.chatService.sendMessage(this.message);
-        this.message = '';
-    }
-}
+export class DicesChatComponent {}

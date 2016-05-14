@@ -1,0 +1,10 @@
+:host {
+    display: block;
+    color: white;
+    padding: .5rem 1rem;
+    border-bottom: 1px solid #232324;
+}
+
+:host:nth-child(odd) {
+    background: #1D1D20;
+}

@@ -3,9 +3,8 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'dices-chat-message',
     template: `
-        <div class="message">
-            <ng-content></ng-content>        
-        </div>
-    `
+        <ng-content></ng-content>
+    `,
+    styles: [require('./chat-message.css')]
 })
 export class DicesChatMessageComponent {}

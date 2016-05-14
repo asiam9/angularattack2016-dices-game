@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 import {DicesChatComponent} from './containers/chat-component';
 
 @Component({
@@ -6,6 +6,7 @@ import {DicesChatComponent} from './containers/chat-component';
     directives: [DicesChatComponent],
     template: `
         <dices-chat></dices-chat>
-    `
+    `,
+    encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {}
