@@ -7,7 +7,10 @@ import {NgRedux} from 'ng2-redux';
     selector: 'dices',
     directives: [DicesDiceComponent],
     template: `
-        <dice *ngFor="let diceValue of correctDices" value="{{diceValue}}"></dice>
+        <div class="dices">
+            <dice *ngFor="let diceValue of correctDices" value="{{diceValue}}"></dice>
+        </div>
+        <div class="background"></div>
     `,
     styles: [require('./dices.css')]
 })

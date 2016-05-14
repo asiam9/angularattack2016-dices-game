@@ -11,18 +11,12 @@ import {IAppState} from '../app-state';
 })
 export class DicesWinLooseBarComponent {
     private status;
-    private socket;
     private cssClass;
 
     constructor(ngRedux: NgRedux<IAppState>) {
-        ngRedux.select(n => n.user.getIn(['userdata','socket']))
-            .subscribe(socket => {
-                this.socket = socket;
-            });
-
         ngRedux.select(n => n.dices.getIn(['results', 'winners']))
             .subscribe(winners => {
-                if (winners.toJS().indexOf(this.socket) !== -1) {
+                if (winners) {
                     this.cssClass = 'win';
                     this.status = 'You WIN!';
                 } else {

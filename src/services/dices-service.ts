@@ -6,6 +6,8 @@ import {DICES_DICE_BET, DICES_RESULTS} from '../constants/dices';
 
 @Injectable()
 export class DicesService {
+    private socket;
+
     constructor(
         private socketService: SocketService,
         private ngRedux: NgRedux<IAppState>
@@ -18,6 +20,18 @@ export class DicesService {
                 }
             });
         });
+
+        ngRedux.select(n => n.user.getIn(['userdata','socket']))
+            .subscribe(socket => {
+                this.socket = socket;
+            });
+
+        ngRedux.select(n => n.dices.getIn(['results', 'winners']))
+            .subscribe(winners => {
+                if (winners.toJS().indexOf(this.socket) !== -1) {
+                    
+                }
+            });
     }
 
     betAtDice(diceValue) {

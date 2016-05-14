@@ -1,0 +1,39 @@
+:host {
+    width: 35rem;
+    height: 35rem;
+    display: block;
+    position: relative;
+}
+
+:host .dices {
+    max-width: 17rem;
+    top: 8rem;
+    left: 8rem;
+    position: absolute;
+    z-index: 3;
+}
+
+@-webkit-keyframes rotate {
+    from {transform: rotateZ(0deg);}
+    to {transform: rotateZ(360deg);}
+}
+
+@keyframes rotate {
+    from {transform: rotateZ(0deg);}
+    to {transform: rotateZ(360deg);}
+}
+
+.background {
+    position: absolute;
+    top: 7.3rem;
+    left: 3.5rem;
+    width: 25rem;
+    height: 25rem;
+    border-radius: 100%;
+    border-top: 1rem solid red;
+    border-bottom: 1rem solid red;
+    -webkit-animation: rotate 2s infinite;
+    animation: rotate 2s infinite;
+    z-index: 2;
+}
+

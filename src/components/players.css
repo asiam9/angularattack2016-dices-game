@@ -22,3 +22,9 @@
     top: 1rem;
     position: absolute;
 }
+
+:host .username {
+    max-width: 20rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

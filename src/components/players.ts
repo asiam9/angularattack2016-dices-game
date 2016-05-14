@@ -8,7 +8,7 @@ import {PlayersService} from '../services/players-service';
     template: `
         <div class="player" *ngFor="let player of playersList">
             <span class="avatar material_icons">account_box</span>
-            <span>{{ player.username }}</span>
+            <span class="username">{{ player.username }}</span>
             <span class="score">{{ player.score }}</span>
         </div>
     `,
