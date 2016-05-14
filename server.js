@@ -34,6 +34,7 @@ io.on('connection', function (socket) {
       socket: socket.id
     };
 
+    socket.emit('USER_LOGGED_IN', Globals.players[socket.id]);
     io.emit('PLAYER_JOIN', Globals.players[socket.id]);
   });
 

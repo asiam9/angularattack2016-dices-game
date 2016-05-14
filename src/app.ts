@@ -5,25 +5,28 @@ import {DicesAsideComponent} from './containers/aside';
 import {DicesLoginFormComponent} from './components/login-form';
 import {DicesChooseDiceComponent} from './containers/choose-dice';
 import {DicesTimerComponent} from './components/timer';
+import {DicesWinLooseBarComponent} from './components/winloose-bar';
 import {NgRedux} from 'ng2-redux';
 import {IAppState} from './app-state';
 
 @Component({
     selector: 'my-app',
     directives: [DicesComponent, DicesChatComponent, DicesAsideComponent, DicesLoginFormComponent,
-        DicesChooseDiceComponent, DicesTimerComponent],
+        DicesChooseDiceComponent, DicesTimerComponent, DicesWinLooseBarComponent],
     template: `
         <dices-aside></dices-aside>
         <dices></dices>
         <dices-chat></dices-chat>
+        <dices-winloose-bar></dices-winloose-bar>
         <dices-choose-dice></dices-choose-dice>
         <p *ngIf="!userdata.username"><button (click)="showLoginModal()">START GAME!</button></p>
-        <login-form *ngIf="loginModal && !userdata.username"></login-form>
+        <login-form *ngIf="!userdata.username"></login-form>
         <dices-timer></dices-timer>
     `,
     encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
+    /**ngIf="loginModal && "*/
     private userdata;
     private loginModal = false;
 

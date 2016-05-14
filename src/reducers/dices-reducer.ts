@@ -4,7 +4,10 @@ import {DICES_SELECT_DICE, DICES_DICE_BET, DICES_RESULTS} from '../constants/dic
 const INITIAL_STATE = fromJS({
     selectedDice: 0,
     diceBet: 0,
-    results: {}
+    results: {
+        winners: [],
+        correctDices: []
+    }
 });
 
 function dices(state = INITIAL_STATE, action: any = { type: '' }) {

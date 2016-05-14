@@ -18,13 +18,6 @@ module.exports = function init(io) {
       correctDices.push(Math.floor(Math.random() * (MAX - MIN) + MIN));
     }
 
-    const counts = {}
-
-    for(let i=0; i<correctDices.length; i++) {
-      const k = correctDices[i];
-      counts[k] = counts[k] ? counts[k]+1 : 1;
-    }
-    
     for(let k in Globals.bets) {
       if(Globals.bets[k] === correctDice) {
         winners.push(k);

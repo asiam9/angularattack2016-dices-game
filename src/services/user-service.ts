@@ -9,18 +9,18 @@ export class UserService {
     constructor(
         private socketService: SocketService,
         private ngRedux: NgRedux<IAppState>
-    ){}
+    ){
+        this.socketService.socket.on('USER_LOGGED_IN', userdata => {
+            this.ngRedux.dispatch({
+                type: USER_LOGGED_IN,
+                payload: userdata
+            });
+        });
+    }
 
     login(username) {
         this.socketService.socket.emit('USER_LOGIN', {
             username
-        });
-
-        this.ngRedux.dispatch({
-            type: USER_LOGGED_IN,
-            payload: {
-                username
-            }
         });
     }
 }

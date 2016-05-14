@@ -10,7 +10,14 @@ const INITIAL_STATE = fromJS({
 function user(state = INITIAL_STATE, action: any = { type: '' }) {
     switch(action.type) {
         case USER_LOGGED_IN: {
-            return state.mergeDeep({ userdata: { username: action.payload.username }});
+            return state.mergeDeep({
+                userdata: {
+                    id: action.payload.id,
+                    username: action.payload.username,
+                    socket: action.payload.socket,
+                    score: action.payload.score
+                }
+            });
         }
 
         default: return state;
