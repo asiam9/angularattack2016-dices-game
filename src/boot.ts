@@ -9,7 +9,9 @@ import {provider} from 'ng2-redux';
 import {Iterable} from 'immutable';
 import rootReducer from './reducers';
 const thunk = require('redux-thunk').default;
+import {SocketService} from './services/socket-service';
 import {ChatService} from './services/chat-service';
+import {UserService} from './services/user-service';
 
 const stateTransformer = (state) => {
     const newState = {};
@@ -31,5 +33,7 @@ import {AppComponent} from './app';
 
 bootstrap(AppComponent, [
     provider(store),
-    ChatService
+    SocketService,
+    ChatService,
+    UserService,
 ]);

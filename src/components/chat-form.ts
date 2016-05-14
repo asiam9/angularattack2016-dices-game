@@ -16,7 +16,9 @@ export class DicesChatFormComponent {
 
     constructor(private chatService: ChatService) {}
 
-    sendMessage() {
+    sendMessage($event) {
+        if(!this.message) return;
+
         this.chatService.sendMessage(this.message);
         this.message = '';
     }

@@ -1,3 +1,5 @@
 :host {
     background: #19191A;
+    height: 23rem;
+    overflow: scroll;
 }
