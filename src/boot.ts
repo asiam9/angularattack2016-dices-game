@@ -12,6 +12,7 @@ const thunk = require('redux-thunk').default;
 import {SocketService} from './services/socket-service';
 import {ChatService} from './services/chat-service';
 import {UserService} from './services/user-service';
+import {PlayersService} from './services/players-service';
 
 const stateTransformer = (state) => {
     const newState = {};
@@ -36,4 +37,5 @@ bootstrap(AppComponent, [
     SocketService,
     ChatService,
     UserService,
+    PlayersService
 ]);

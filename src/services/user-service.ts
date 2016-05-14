@@ -12,9 +12,9 @@ export class UserService {
     ){}
 
     login(username) {
-        /*this.socketService.socket.emit('USER_LOGIN', {
+        this.socketService.socket.emit('USER_LOGIN', {
             username
-        });*/
+        });
 
         this.ngRedux.dispatch({
             type: USER_LOGGED_IN,
