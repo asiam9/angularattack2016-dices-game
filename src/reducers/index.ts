@@ -1,4 +1,5 @@
 import {combineReducers} from 'redux';
-import {dicesReducer} from './dices';
+import {dices} from './dices-reducer';
+import {chat} from './chat-reducer';
 
-export default combineReducers({dicesReducer});
+export default combineReducers({dices, chat});

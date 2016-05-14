@@ -9,6 +9,7 @@ import {provider} from 'ng2-redux';
 import {Iterable} from 'immutable';
 import rootReducer from './reducers';
 const thunk = require('redux-thunk').default;
+import {ChatService} from './services/chat-service';
 
 const stateTransformer = (state) => {
     const newState = {};
@@ -29,5 +30,6 @@ const store = applyMiddleware(thunk, logger)(createStore)(rootReducer, {});
 import {AppComponent} from './app';
 
 bootstrap(AppComponent, [
-    provider(store)
+    provider(store),
+    ChatService
 ]);
