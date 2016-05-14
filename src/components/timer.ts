@@ -5,7 +5,8 @@ import {NgRedux} from 'ng2-redux';
 @Component({
     selector: 'dices-timer',
     template: `
-        {{timer}}
+        <span class="timer">{{timer}}</span>
+        <span class="material-icons">timer</span>
     `,
     styles: [require('./timer.css')]
 })

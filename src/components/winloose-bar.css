@@ -1,4 +1,12 @@
 :host {
-    background: red;
+    display: block;
     color: white;
+}
+
+:host .win {
+    background: green;
+}
+
+:host .lost {
+    background: red;
 }

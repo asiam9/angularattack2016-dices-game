@@ -8,7 +8,8 @@ import {DicesChatMessageComponent} from './chat-message';
     directives: [DicesChatMessageComponent],
     template: `
         <dices-chat-message *ngFor="let message of messages">
-            {{ message.body }}
+            <span class="username">{{ message.username }}</span>
+            <span class="body">{{ message.body }}</span>
         </dices-chat-message>
     `,
     styles: [require('./chat-messages.css')]

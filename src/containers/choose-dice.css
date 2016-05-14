@@ -7,3 +7,9 @@
 :host .option.active {
     background: #82BF00;
 }
+
+:host .betBtn {
+    height: 64px;
+    width: 128px;
+    background:
+}

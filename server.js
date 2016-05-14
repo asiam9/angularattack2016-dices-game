@@ -13,15 +13,27 @@ io.on('connection', function (socket) {
   socket.emit('PLAYERS_LIST', _players);
 
   socket.on('CHAT_MESSAGE_OUT', function (message) {
-    io.emit('CHAT_MESSAGE_IN', { body: message.body });
+    if(!Globals.players[socket.id]) return;
+
+    io.emit('CHAT_MESSAGE_IN', {
+      username: Globals.players[socket.id].nickname,
+      body: message.body
+    });
   });
 
   socket.on('disconnect', function() {
-    if(Globals.players[socket.id]) {
-      io.emit('PLAYER_LEAVE', {
-        id: Globals.players[socket.id].id
-      });
-    }
+    if(!Globals.players[socket.id]) return;
+
+    io.emit('PLAYER_LEAVE', {
+      id: Globals.players[socket.id].id
+    });
+
+    io.emit('CHAT_MESSAGE_IN', {
+      username: 'Croupier',
+      body: `${Globals.players[socket.id].username} left us...`
+    });
+
+    delete Globals.players[socket.id];
   });
 
   socket.on('USER_LOGIN', function(userdata) {
@@ -36,9 +48,21 @@ io.on('connection', function (socket) {
 
     socket.emit('USER_LOGGED_IN', Globals.players[socket.id]);
     io.emit('PLAYER_JOIN', Globals.players[socket.id]);
+
+    io.emit('CHAT_MESSAGE_IN', {
+      username: 'Croupier',
+      body: `Say "hi!" to ${Globals.players[socket.id].username}`
+    });
   });
 
   socket.on('DICE_BET', function(bet) {
+    if(!Globals.players[socket.id]) return;
+
     Globals.bets[socket.id] = bet.diceValue;
+
+    io.emit('CHAT_MESSAGE_IN', {
+      username: 'Croupier',
+      body: `${Globals.players[socket.id].username} bets at ${bet.diceValue}!`
+    });
   });
 });

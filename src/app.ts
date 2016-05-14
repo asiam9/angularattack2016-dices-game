@@ -16,12 +16,12 @@ import {IAppState} from './app-state';
     template: `
         <dices-aside></dices-aside>
         <dices></dices>
-        <dices-chat></dices-chat>
+        <dices-timer></dices-timer>
         <dices-winloose-bar></dices-winloose-bar>
         <dices-choose-dice></dices-choose-dice>
+        <dices-chat></dices-chat>
         <p *ngIf="!userdata.username"><button (click)="showLoginModal()">START GAME!</button></p>
         <login-form *ngIf="!userdata.username"></login-form>
-        <dices-timer></dices-timer>
     `,
     encapsulation: ViewEncapsulation.None
 })
