@@ -3,6 +3,10 @@
     color: white;
 }
 
+:host .status {
+    padding: 1rem 2rem;
+}
+
 :host .win {
     background: green;
 }

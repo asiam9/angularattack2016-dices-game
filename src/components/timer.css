@@ -1,21 +1,20 @@
 :host {
-    position: absolute;
-    height: 64px;
-    width: 64px;
-    top: 16px;
-    right: 16px;
+    position: relative;
+    display: inline-block;
+    margin: 0 0 3rem;
 }
 
 :host .timer {
     display: block;
     position: absolute;
     z-index: 5;
-    font-size: 36px;
+    font-size: 8rem;
     color: white;
     left: 0;
-    top: 24px;
+    top: 3.1rem;
     width: 100%;
     text-align: center;
+    line-height: 1em;
 }
 
 :host .material-icons {
@@ -23,7 +22,7 @@
     color: #222327;
     position: relative;
     z-index: 3;
-    font-size: 64px;
+    font-size: 12.8rem;
     left: 0;
     top: 0;
     line-height: 1em;

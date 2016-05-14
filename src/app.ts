@@ -6,18 +6,24 @@ import {DicesLoginFormComponent} from './components/login-form';
 import {DicesChooseDiceComponent} from './containers/choose-dice';
 import {DicesTimerComponent} from './components/timer';
 import {DicesWinLooseBarComponent} from './components/winloose-bar';
+import {DicesColumnComponent} from './containers/column';
+import {DicesInfoComponent} from './components/info';
 import {NgRedux} from 'ng2-redux';
 import {IAppState} from './app-state';
 
 @Component({
     selector: 'my-app',
     directives: [DicesComponent, DicesChatComponent, DicesAsideComponent, DicesLoginFormComponent,
-        DicesChooseDiceComponent, DicesTimerComponent, DicesWinLooseBarComponent],
+        DicesChooseDiceComponent, DicesTimerComponent, DicesWinLooseBarComponent, DicesColumnComponent,
+        DicesInfoComponent],
     template: `
         <dices-aside></dices-aside>
         <dices></dices>
-        <dices-timer></dices-timer>
-        <dices-winloose-bar></dices-winloose-bar>
+        <dices-column>
+            <dices-info></dices-info>
+            <dices-timer></dices-timer>
+            <dices-winloose-bar></dices-winloose-bar>
+        </dices-column>
         <dices-choose-dice></dices-choose-dice>
         <dices-chat></dices-chat>
         <p *ngIf="!userdata.username"><button (click)="showLoginModal()">START GAME!</button></p>
