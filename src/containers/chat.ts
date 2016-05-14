@@ -10,6 +10,6 @@ import {DicesChatMessagesComponent} from '../components/chat-messages';
         <dices-chat-messages></dices-chat-messages>
         <dices-chat-form></dices-chat-form>
     `,
-    styles: [require('./chat-component.css')]
+    styles: [require('./chat.css')]
 })
 export class DicesChatComponent {}

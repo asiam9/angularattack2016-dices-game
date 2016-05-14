@@ -2,6 +2,10 @@ var app = require('http').createServer()
 var io = require('socket.io')(app);
 var fs = require('fs');
 
+const players = [{
+  
+}];
+
 app.listen(1337);
 
 io.on('connection', function (socket) {

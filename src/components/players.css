@@ -1,0 +1,24 @@
+:host .player {
+    border-bottom: 1px solid #313131;
+    padding: .5rem 0;
+    position: relative;
+}
+
+:host span {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+:host .avatar {
+    background: #121315;
+    color: white;
+    padding: .5rem;
+    border-radius: 2rem;
+    margin-right: 1rem;
+}
+
+:host .score {
+    right: 0;
+    top: 1rem;
+    position: absolute;
+}

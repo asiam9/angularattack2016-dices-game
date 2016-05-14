@@ -12,6 +12,6 @@ import {DicesDiceComponent} from '../components/dice';
         <dice value="5"></dice>
         <dice value="6"></dice>
     `,
-    styles: [require('./dices-component.css')]
+    styles: [require('./dices.css')]
 })
 export class DicesComponent {}
