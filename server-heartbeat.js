@@ -13,7 +13,7 @@ module.exports = function init(io) {
     const correctDices = [];
     const correctDice = Math.floor(Math.random() * (MAX - MIN) + MIN);
 
-    for(let i=0; i < 3; i++) {
+    for(let i=0; i < 3; i++) { // well... its CASINO^^
       correctDices.push(correctDice);
       correctDices.push(Math.floor(Math.random() * (MAX - MIN) + MIN));
     }

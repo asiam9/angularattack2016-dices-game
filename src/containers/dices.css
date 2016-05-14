@@ -24,7 +24,7 @@
     to {transform: rotateZ(360deg);}
 }
 
-.background {
+:host .background {
     position: absolute;
     top: 0;
     left: 3.5rem;
@@ -37,4 +37,3 @@
     animation: rotate 2s infinite;
     z-index: 2;
 }
-
