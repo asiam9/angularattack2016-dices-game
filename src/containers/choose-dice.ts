@@ -17,7 +17,10 @@ import {DicesService} from '../services/dices-service';
             <dice value="{{diceValue}}"></dice>
             <div class="fancy-circle"></div>
         </div>
-      <button (click)="betAtDice()" [disabled]="diceBet || !selectedDice" class="betBtn">BET AT YOUR LUCK!</button>
+        <div class="betBtn" [ngClass]="{ active: !isDisabled() }">
+            <button (click)="betAtDice()" [disabled]="isDisabled()" class="btn">BET AT YOUR LUCK!</button>
+            <div class="fancy-circle"></div>
+        </div>
     `,
     styles: [require('./choose-dice.css')]
 })
@@ -37,9 +40,14 @@ export class DicesChooseDiceComponent {
             .subscribe((diceBet: Number) => { this.diceBet = diceBet; });
     }
 
+    isDisabled() {
+        return this.diceBet || !this.selectedDice;
+    }
+
     checkIsActive(diceValue) {
         return this.selectedDice == diceValue;
     }
+
     chooseDice(diceValue) {
         if(this.diceBet) return false;
 

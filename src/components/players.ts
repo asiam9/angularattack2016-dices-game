@@ -9,7 +9,7 @@ import {PlayersService} from '../services/players-service';
         <div class="player" *ngFor="let player of playersList">
             <span class="avatar material_icons">face</span>
             <span class="username">{{ player.username }}</span>
-            <span class="pot"><small>Round {{ player.rounds }}</small> &#36;{{ player.pot }}</span>
+            <span class="pot"><small>Round {{ player.rounds }}</small> <i>&#36;{{ player.pot }}</i></span>
         </div>
     `,
     styles: [require('./players.css')],

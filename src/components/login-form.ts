@@ -2,7 +2,7 @@ import {Component, Output, EventEmitter} from '@angular/core';
 import {UserService} from '../services/user-service';
 
 @Component({
-    selector: 'login-form',
+    selector: 'dices-login-form',
     template: `
         <form (submit)="login()">
             <input type="text" [(ngModel)]="username" placeholder="Type Your nickname..." />

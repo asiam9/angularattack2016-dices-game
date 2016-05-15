@@ -10,3 +10,8 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+:host h2 {
+    border-bottom: 1px solid red;
+    padding: 0 0 1rem;
+}

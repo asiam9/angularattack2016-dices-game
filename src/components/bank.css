@@ -4,6 +4,7 @@
     margin: 0 0 2rem;
     display: block;
     position: relative;
+    border-top: 1px solid #AEAFB3;
 }
 
 :host div {
@@ -15,4 +16,8 @@
     top: 0;
     right: 0;
     position: absolute;
+}
+
+:host small {
+    font-size: 1.2rem;
 }

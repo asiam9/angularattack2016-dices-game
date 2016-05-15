@@ -1,11 +1,12 @@
 import {fromJS} from 'immutable';
 import {DICES_SELECT_DICE, DICES_DICE_BET, DICES_RESULTS, DICES_STATUS_WIN, DICES_STATUS_LOST, DICES_STATUS_WAITING,
-    DICES_RESET, DICES_STATUS_MISSED, DICES_STATUS_WAITING_FOR_NEXT_ROUND} from '../constants/dices';
+    DICES_RESET, DICES_STATUS_MISSED, DICES_STATUS_WAITING_FOR_NEXT_ROUND, DICES_STATUS_END} from '../constants/dices';
 
 const INITIAL_STATE = fromJS({
     selectedDice: 0,
     diceBet: 0,
     status: 'NONE',
+    gameStatus: 'NONE',
     results: {
         winners: [],
         correctDices: []
@@ -45,8 +46,13 @@ function dices(state = INITIAL_STATE, action: any = { type: '' }) {
         case DICES_RESET: {
             return state.merge({ diceBet: 0, selectedDice: 0 });
         }
+
         case DICES_STATUS_WAITING_FOR_NEXT_ROUND: {
             return state.merge({ status: 'WAITING_FOR_NEXT_ROUND'});
+        }
+
+        case DICES_STATUS_END: {
+            return state.merge({ gameStatus: 'END'});
         }
 
         default: return state;

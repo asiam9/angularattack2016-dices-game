@@ -9,8 +9,8 @@ import {BankService} from '../services/bank-service';
     pipes: [AsyncPipe],
     selector: 'dices-bank',
     template: `
-        <div class="row">Your pot: <span>&#36;{{pot$ | async}}</span></div>
-        <div class="row">Bank: <span>&#36;{{bank$ | async}}</span></div>
+        <div class="row"><small>Your pot:</small> <span>&#36;{{pot$ | async}}</span></div>
+        <div class="row"><small>Bank:</small> <span>&#36;{{bank$ | async}}</span></div>
     `,
     styles: [require('./bank.css')]
 })

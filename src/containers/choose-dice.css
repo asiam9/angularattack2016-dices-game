@@ -34,7 +34,7 @@
     bottom: 0;
     left: 0;
     opacity: 1;
-    background: rgba(255,0,0,1);
+    background: rgba(255,0,0,.75);
 }
 
 :host .betBtn {
@@ -43,4 +43,46 @@
     display: inline-block;
     vertical-align: top;
     margin: 1rem 0 0 2rem;
+    overflow: hidden;
+    position: relative;
+}
+
+:host .betBtn .btn {
+    width: 100%;
+    height: 100%;
+    transition: .25s all linear;
+    background: rgba(255,0,0,.0);
+    font-size: 1.6rem;
+}
+
+:host .betBtn .fancy-circle {
+    border-radius: 100%;
+    position: absolute;
+    z-index: 2;
+    bottom: -100%;
+    left: -100%;
+    content: '';
+    width: 0;
+    height: 0;
+    transition: .25s all linear;
+    background: rgba(255,0,0,.0);
+}
+
+:host .betBtn.active {
+    background: rgba(255,0,0,.5);
+}
+
+:host .betBtn.active .btn {
+    color: white;
+    z-index: 3;
+    position: relative;
+}
+
+:host .betBtn.active .fancy-circle {
+    width: 50rem;
+    height: 12.8rem;
+    top: -6.4rem;
+    left: 0;
+    opacity: 1;
+    background: rgba(255,0,0,.75);
 }

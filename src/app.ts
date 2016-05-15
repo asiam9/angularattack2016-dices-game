@@ -11,12 +11,13 @@ import {DicesInfoComponent} from './components/info';
 import {NgRedux} from 'ng2-redux';
 import {IAppState} from './app-state';
 import {Observable} from 'rxjs';
+import {DicesLostComponent} from "./components/lost";
 
 @Component({
     selector: 'my-app',
     directives: [DicesComponent, DicesChatComponent, DicesAsideComponent, DicesLoginFormComponent,
         DicesChooseDiceComponent, DicesTimerComponent, DicesWinLooseBarComponent, DicesColumnComponent,
-        DicesInfoComponent],
+        DicesInfoComponent, DicesLostComponent],
     template: `
         <dices-aside></dices-aside>
         <dices></dices>
@@ -28,7 +29,8 @@ import {Observable} from 'rxjs';
         <dices-choose-dice></dices-choose-dice>
         <dices-chat></dices-chat>
         <p *ngIf="!username"><button (click)="showLoginModal()">START GAME!</button></p>
-        <login-form *ngIf="!username"></login-form>
+        <dices-login-form *ngIf="!username"></dices-login-form>
+        <dices-lost-component *ngIf="isEnd()"></dices-lost-component>
     `,
     encapsulation: ViewEncapsulation.None
 })
@@ -36,10 +38,18 @@ export class AppComponent {
     /**ngIf="loginModal && "*/
     private username: Observable<string>;
     private loginModal = false;
+    private gameStatus;
 
     constructor(ngRedux: NgRedux<IAppState>) {
         ngRedux.select(n => n.user.get('username'))
             .subscribe((username: any) => { this.username = username; });
+
+        ngRedux.select(n => n.dices.get('gameStatus'))
+            .subscribe((gameStatus: any) => { this.gameStatus = gameStatus; });
+    }
+
+    isEnd() {
+        return this.gameStatus == 'END';
     }
 
     showLoginModal() {

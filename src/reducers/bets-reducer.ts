@@ -1,22 +1,16 @@
 import {fromJS} from 'immutable';
-import {PLAYERS_PLAYER_JOIN, PLAYERS_PLAYER_LEAVE, PLAYERS_LIST} from '../constants/players';
+import {BETS_UPDATE} from '../constants/bets';
 
 const INITIAL_STATE = fromJS([]);
 
-function players(state = INITIAL_STATE, action: any = { type: '' }) {
+function bets(state = INITIAL_STATE, action: any = { type: '' }) {
     switch(action.type) {
-        case PLAYERS_LIST: {
+        case BETS_UPDATE: {
             return state.merge(action.payload);
-        }
-        case PLAYERS_PLAYER_JOIN: {
-            return state.push(action.payload);
-        }
-        case PLAYERS_PLAYER_LEAVE: {
-            return state.filter(player => player.id !== action.payload.id);
         }
 
         default: return state;
     }
 }
 
-export {players};
+export {bets};

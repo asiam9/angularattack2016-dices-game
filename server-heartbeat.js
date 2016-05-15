@@ -91,6 +91,11 @@ module.exports = function init(io) {
       Globals.hallOfFame = Globals.hallOfFame.sort((a, b) => b.rounds - a.rounds);
 
       io.emit('HALLOFFAME_UPDATE', Globals.hallOfFame);
+
+      io.emit('CHAT_MESSAGE_IN', {
+        username: 'Croupier',
+        body: `The winners of last round are: ${winners.join(', ')}`
+      });
     }
 
     heatbeat();
