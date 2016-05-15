@@ -10,13 +10,17 @@ module.exports = function init(io) {
   const heatbeat = () => setTimeout(() => {
     endAt = new Date().getTime() + interval;
     const winners = [];
-    const correctDices = [];
     const correctDice = Math.floor(Math.random() * (MAX - MIN) + MIN);
 
-    for(let i=3; i !== 0; i--) { // well... its CASINO^^
-      correctDices.push(correctDice);
-      correctDices.push(Math.floor(Math.random() * (MAX - MIN) + MIN));
-    }
+    // well... its CASINO^^
+    const correctDices = [
+      correctDice,
+      correctDice,
+      Math.floor(Math.random() * (MAX - MIN) + MIN),
+      Math.floor(Math.random() * (MAX - MIN) + MIN),
+      correctDice,
+      correctDice
+    ];
 
     for(let k in Globals.bets) {
       if(Globals.bets[k] === correctDice) {
