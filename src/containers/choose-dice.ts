@@ -15,6 +15,7 @@ import {DicesService} from '../services/dices-service';
             (click)="chooseDice(diceValue)"
             [ngClass]="{ active: checkIsActive(diceValue) }">
             <dice value="{{diceValue}}"></dice>
+            <div class="fancy-circle"></div>
         </div>
         <button (click)="betAtDice()" [disabled]="diceBet" class="betBtn">BET AT YOUR LUCK!</button>
     `,

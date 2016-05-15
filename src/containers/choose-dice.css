@@ -1,8 +1,40 @@
 :host .option {
     display: inline-block;
-    padding: 2rem;
-    border-radius: 100%;
+    padding: .1rem;
     position: relative;
+    overflow: hidden;
+    transition: .25s all linear;
+}
+
+:host .option dice {
+    z-index: 3;
+    position: relative;
+}
+
+:host .option .fancy-circle {
+    border-radius: 100%;
+    position: absolute;
+    z-index: 2;
+    bottom: -100%;
+    left: -100%;
+    content: '';
+    width: 0;
+    height: 0;
+    transition: .25s all linear;
+    background: rgba(255,0,0,.0);
+}
+
+:host .option.active {
+    background: rgba(255,0,0,.5);
+}
+
+:host .option.active .fancy-circle {
+    width: 200%;
+    height: 200%;
+    bottom: 0;
+    left: 0;
+    opacity: 1;
+    background: rgba(255,0,0,1);
 }
 
 :host .betBtn {
@@ -10,9 +42,5 @@
     width: 12.8rem;
     display: inline-block;
     vertical-align: top;
-    margin: 3rem 0 0 2rem
-}
-
-:host .option.active {
-    background: red;
+    margin: 3rem 0 0 2rem;
 }

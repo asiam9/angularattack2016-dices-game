@@ -11,7 +11,7 @@ module.exports = function init(io) {
     endAt = new Date().getTime() + interval;
     const winners = [];
     const correctDices = [];
-    const correctDice = 1; //Math.floor(Math.random() * (MAX - MIN) + MIN);
+    const correctDice = 1; // Math.floor(Math.random() * (MAX - MIN) + MIN); FIXME !
 
     for(let i=3; i !== 0; i--) { // well... its CASINO^^
       correctDices.push(correctDice);
@@ -27,8 +27,10 @@ module.exports = function init(io) {
     let prize = 0;
 
     if(winners.length) {
-      const excess = Globals.bank % winners.length;
-      prize = (Globals.bank - excess) / winners.length + 200;
+      const excess = (Globals.bank / winners.length) % 100;
+      prize = ((Globals.bank - excess) / winners.length) + 200;
+
+      console.log(excess);
 
       Globals.bank = excess;
 
@@ -50,7 +52,7 @@ module.exports = function init(io) {
 
     const bets = Object.keys(Globals.bets).map(key => Globals.bets[key]);
 
-    if(bets.length < 2) { Globals.bank = 0; }
+    if(bets.length && bets.length < 2) { Globals.bank = 0; }
     Globals.bets = {};
 
     io.emit('BANK_UPDATE', {
