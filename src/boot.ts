@@ -3,6 +3,7 @@ import 'core-js/es7/reflect';
 require('zone.js/dist/zone');
 import 'ts-helpers';
 
+import {enableProdMode} from '@angular/core';
 import {bootstrap} from '@angular/platform-browser-dynamic';
 import {createStore, applyMiddleware} from 'redux';
 import {provider} from 'ng2-redux';
@@ -25,15 +26,17 @@ const stateTransformer = (state) => {
     return newState;
 };
 
-const logger = require('redux-logger')({
+/*const logger = require('redux-logger')({
     level: 'info',
     collapsed: true,
     stateTransformer
-});
+});*/
 
-const store = applyMiddleware(thunk, logger)(createStore)(rootReducer, {});
+const store = applyMiddleware(thunk/*, logger*/)(createStore)(rootReducer, {});
 
 import {AppComponent} from './app';
+
+enableProdMode();
 
 bootstrap(AppComponent, [
     provider(store),

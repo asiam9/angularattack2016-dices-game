@@ -20,12 +20,21 @@ module.exports = {
   },
 
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': '"production"'
+    }),
     new SplitByPathPlugin([
       {name: 'vendor', path: [__dirname + '/node_modules/']}
     ]),
     new HtmlWebpackPlugin({
       template: './src/index.html',
       inject: 'body'
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      mangle: true,
+      compress: {
+        warnings: false,
+      }
     })
   ],
 
