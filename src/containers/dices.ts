@@ -9,6 +9,7 @@ import {NgRedux} from 'ng2-redux';
     template: `
         <div class="dices">
             <dice *ngFor="let diceValue of correctDices" value="{{diceValue}}"></dice>
+            <div class="wait" *ngIf="!correctDices.length">stay calm...</div>
         </div>
         <div class="background"></div>
     `,
@@ -19,6 +20,6 @@ export class DicesComponent {
 
     constructor(ngRedux: NgRedux<IAppState>) {
         ngRedux.select(n => n.dices.getIn(['results', 'correctDices']))
-            .subscribe((correctDices: Array<Number>) => { this.correctDices = correctDices; });
+            .subscribe((correctDices: any) => { this.correctDices = correctDices.toJS(); });
     }
 }

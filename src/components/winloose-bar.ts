@@ -39,7 +39,7 @@ export class DicesWinLooseBarComponent {
                 case 'MISSED':
                 {
                     this.cssClass = 'info';
-                    this.status = 'Latest round missed. Stay gambling - select Your lucky DICE!';
+                    this.status = 'Latest round missed. Keep on gambling - select Your lucky DICE!';
                     break;
                 }
                 case 'SELECTED':
