@@ -30,8 +30,6 @@ module.exports = function init(io) {
       const excess = (Globals.bank / winners.length) % 100;
       prize = ((Globals.bank - excess) / winners.length) + 200;
 
-      console.log(excess);
-
       Globals.bank = excess;
 
       for (let n = winners.length - 1; n !== -1; n--) {
@@ -47,17 +45,49 @@ module.exports = function init(io) {
       prize
     });
 
-    const _players = Object.keys(Globals.players).map(key => Globals.players[key]);
+    let _players = Object.keys(Globals.players).map(key => Globals.players[key]);
     io.emit('PLAYERS_LIST', _players);
 
     const bets = Object.keys(Globals.bets).map(key => Globals.bets[key]);
 
     if(bets.length && bets.length < 2) { Globals.bank = 0; }
-    Globals.bets = {};
 
     io.emit('BANK_UPDATE', {
       bank: Globals.bank
     });
+
+    Globals.bets = {};
+
+    if(_players.length) {
+      _players.sort((a, b) => b.rounds - a.rounds);
+      const top5 = _players.slice(0, 5 || _players.length - 1);
+
+      for (let n = top5.length - 1; n !== -1; n--) {
+        for (let m = Globals.hallOfFame.length - 1; m !== -1; m--) {
+          if (top5[n].rounds > Globals.hallOfFame[m].rounds) {
+            let found = false;
+
+            for (let o = Globals.hallOfFame.length - 1; o !== -1; o--) {
+              if(top5[n].socket == Globals.hallOfFame[o].socket) {
+                found = true;
+                Globals.hallOfFame[o].rounds = top5[n].rounds;
+              }
+            }
+
+            if(!found) {
+              Globals.hallOfFame.unshift(top5[n]);
+            }
+
+            top5.splice(n, 1);
+          }
+        }
+      }
+
+      Globals.hallOfFame = Globals.hallOfFame.sort((a, b) => b.rounds - a.rounds);
+      Globals.hallOfFame = Globals.hallOfFame.slice(0, 4);
+
+      console.log(Globals.hallOfFame);
+    }
 
     heatbeat();
 

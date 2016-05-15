@@ -39,8 +39,8 @@
 
 :host .betBtn {
     height: 6.4rem;
-    width: 12.8rem;
+    width: 20rem;
     display: inline-block;
     vertical-align: top;
-    margin: 3rem 0 0 2rem;
+    margin: 1rem 0 0 2rem;
 }

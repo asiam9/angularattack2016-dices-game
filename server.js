@@ -61,7 +61,7 @@ io.on('connection', function (socket) {
     if(!Globals.players[socket.id]) return;
 
     Globals.bets[socket.id] = bet.diceValue;
-    Globals.players[socket.id].rounds = Globals.players[socket.id].rounds++;
+    Globals.players[socket.id].rounds = Globals.players[socket.id].rounds + 1;
 
     io.emit('CHAT_MESSAGE_IN', {
       username: 'Croupier',
