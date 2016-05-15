@@ -1,7 +1,8 @@
 Globals = {
   players: {},
   visits: 0,
-  bets: {}
+  bets: {},
+  bank: 0
 };
 
 module.exports = Globals;

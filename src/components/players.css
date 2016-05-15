@@ -17,7 +17,7 @@
     margin-right: 1rem;
 }
 
-:host .score {
+:host .pot {
     right: 0;
     top: 1rem;
     position: absolute;

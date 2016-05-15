@@ -14,8 +14,7 @@ function user(state = INITIAL_STATE, action: any = { type: '' }) {
                 userdata: {
                     id: action.payload.id,
                     username: action.payload.username,
-                    socket: action.payload.socket,
-                    score: action.payload.score
+                    socket: action.payload.socket
                 }
             });
         }

@@ -21,7 +21,7 @@ export class DicesWinLooseBarComponent {
                 case 'WIN':
                 {
                     this.cssClass = 'win';
-                    this.status = 'Ohh.. You WIN! Type next DICE!';
+                    this.status = 'Awww.. You WIN! Type next DICE!';
                     break;
                 }
                 case 'LOST':

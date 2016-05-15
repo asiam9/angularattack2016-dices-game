@@ -42,11 +42,14 @@ io.on('connection', function (socket) {
     Globals.players[socket.id] = {
       id: Globals.visits,
       username: userdata.username,
-      score: 1000,
+      pot: 1500,
+      rounds: 0,
       socket: socket.id
     };
 
     socket.emit('USER_LOGGED_IN', Globals.players[socket.id]);
+    socket.emit('BANK_UPDATE', { bank: Globals.bank, pot: Globals.players[socket.id].pot });
+
     io.emit('PLAYER_JOIN', Globals.players[socket.id]);
 
     io.emit('CHAT_MESSAGE_IN', {
@@ -63,6 +66,14 @@ io.on('connection', function (socket) {
     io.emit('CHAT_MESSAGE_IN', {
       username: 'Croupier',
       body: `${Globals.players[socket.id].username} bets at ${bet.diceValue}!`
+    });
+
+    Globals.bank = Globals.bank + 100;
+    Globals.players[socket.id].pot = Globals.players[socket.id].pot - 100;
+
+    io.emit('BANK_UPDATE', {
+      bank: Globals.bank,
+      pot: Globals.players[socket.id].pot
     });
   });
 });
