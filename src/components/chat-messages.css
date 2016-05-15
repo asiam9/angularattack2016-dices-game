@@ -3,10 +3,5 @@
     display: block;
     overflow-y: scroll;
     height: 21.5rem;
-}
-
-:host .username {
-    display: inline-block;
-    font-size: .75em;
-    color: #25A6A1;
+    font-size: 1.4rem;
 }

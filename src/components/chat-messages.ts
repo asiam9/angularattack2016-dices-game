@@ -7,7 +7,7 @@ import {DicesChatMessageComponent} from './chat-message';
     selector: 'dices-chat-messages',
     directives: [DicesChatMessageComponent],
     template: `
-        <dices-chat-message *ngFor="let message of messages">
+        <dices-chat-message *ngFor="let message of messages" [ngClass]="{sys: message.sys}">
             <span class="username">{{ message.username }}</span>
             <span class="body">{{ message.body }}</span>
         </dices-chat-message>

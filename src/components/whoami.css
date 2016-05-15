@@ -1,0 +1,11 @@
+:host .material-icons {
+    display: inline-block;
+    vertical-align: middle;
+    color: white;
+}
+
+:host h3 {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0 1.5rem;
+}

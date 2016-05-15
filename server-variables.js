@@ -5,19 +5,24 @@ Globals = {
   bank: 0,
   hallOfFame: [{
     username: '-',
-    rounds: 0
+    rounds: 0,
+    pot: 0
   }, {
     username: '-',
-    rounds: 0
+    rounds: 0,
+    pot: 0
   },{
     username: '-',
-    rounds: 0
+    rounds: 0,
+    pot: 0
   },{
     username: '-',
-    rounds: 0
+    rounds: 0,
+    pot: 0
   },{
     username: '-',
-    rounds: 0
+    rounds: 0,
+    pot: 0
   }]
 };
 

@@ -11,6 +11,7 @@ function players(state = INITIAL_STATE, action: any = { type: '' }) {
         case PLAYERS_PLAYER_JOIN: {
             return state.push(action.payload);
         }
+
         case PLAYERS_PLAYER_LEAVE: {
             return state.filter(player => player.id !== action.payload.id);
         }

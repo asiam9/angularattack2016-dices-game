@@ -21,21 +21,6 @@ io.on('connection', function (socket) {
     });
   });
 
-  socket.on('disconnect', function() {
-    if(!Globals.players[socket.id]) return;
-
-    io.emit('PLAYER_LEAVE', {
-      id: Globals.players[socket.id].id
-    });
-
-    io.emit('CHAT_MESSAGE_IN', {
-      username: 'Croupier',
-      body: `${Globals.players[socket.id].username} left us...`
-    });
-
-    delete Globals.players[socket.id];
-  });
-
   socket.on('USER_LOGIN', function(userdata) {
     Globals.visits++;
 
@@ -54,6 +39,7 @@ io.on('connection', function (socket) {
 
     io.emit('CHAT_MESSAGE_IN', {
       username: 'Croupier',
+      sys: true,
       body: `Say "hi!" to ${Globals.players[socket.id].username}`
     });
   });
@@ -66,6 +52,7 @@ io.on('connection', function (socket) {
 
     io.emit('CHAT_MESSAGE_IN', {
       username: 'Croupier',
+      sys: true,
       body: `${Globals.players[socket.id].username} bets at ${bet.diceValue}!`
     });
 
@@ -76,5 +63,26 @@ io.on('connection', function (socket) {
       bank: Globals.bank,
       pot: Globals.players[socket.id].pot
     });
+  });
+
+
+  socket.on('disconnect', function() {
+    if(!Globals.players[socket.id]) return;
+
+    io.emit('PLAYER_LEAVE', {
+      id: Globals.players[socket.id].id
+    });
+
+    io.emit('CHAT_MESSAGE_IN', {
+      username: 'Croupier',
+      sys: true,
+      body: `${Globals.players[socket.id].username} left us...`
+    });
+
+    Globals.players[socket.id] = null;
+    delete Globals.players[socket.id];
+
+    const _players = Object.keys(Globals.players).map(key => Globals.players[key]);
+    socket.emit('PLAYERS_LIST', _players);
   });
 });

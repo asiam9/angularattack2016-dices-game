@@ -9,7 +9,7 @@ import {IAppState} from '../app-state';
         <div class="player" *ngFor="let player of playersList">
             <span class="avatar material_icons">star_rate</span>
             <span class="username">{{ player.username }}</span>
-            <span class="pot"><small>Rounds {{ player.rounds }}</small> <i>&#36;{{ player.pot }}</i></span>
+            <span class="pot"><small>{{ player.rounds }} Rounds</small> <i>&#36;{{ player.pot }}</i></span>
         </div>
     `,
     styles: [require('./players.css')]

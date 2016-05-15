@@ -8,3 +8,17 @@
 :host:nth-child(odd) {
     background: #1D1D20;
 }
+
+:host .username {
+    display: inline-block;
+    font-size: .8em;
+    color: #25A6A1;
+}
+
+:host.sys {
+    color: #88898D;
+}
+
+:host.sys .username {
+    color: red;
+}

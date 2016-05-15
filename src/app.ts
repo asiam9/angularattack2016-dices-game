@@ -28,16 +28,13 @@ import {DicesLostComponent} from "./components/lost";
         </dices-column>
         <dices-choose-dice></dices-choose-dice>
         <dices-chat></dices-chat>
-        <p *ngIf="!username"><button (click)="showLoginModal()">START GAME!</button></p>
         <dices-login-form *ngIf="!username"></dices-login-form>
         <dices-lost-component *ngIf="isEnd()"></dices-lost-component>
     `,
     encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
-    /**ngIf="loginModal && "*/
     private username: Observable<string>;
-    private loginModal = false;
     private gameStatus;
 
     constructor(ngRedux: NgRedux<IAppState>) {
@@ -50,9 +47,5 @@ export class AppComponent {
 
     isEnd() {
         return this.gameStatus == 'END';
-    }
-
-    showLoginModal() {
-        this.loginModal = true;
     }
 }

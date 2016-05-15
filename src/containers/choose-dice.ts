@@ -10,7 +10,7 @@ import {DicesService} from '../services/dices-service';
     selector: 'dices-choose-dice',
     directives: [DicesDiceComponent, NgClass],
     template: `        
-        <h2>Type dice:</h2>
+        <h2>Type the dice:</h2>
         <div class="option" *ngFor="let diceValue of dicesValues"
             (click)="chooseDice(diceValue)"
             [ngClass]="{ active: checkIsActive(diceValue) }">

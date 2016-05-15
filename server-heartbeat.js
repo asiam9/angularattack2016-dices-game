@@ -34,7 +34,10 @@ module.exports = function init(io) {
 
       for (let n = winners.length - 1; n !== -1; n--) {
         const socket = winners[n];
-        Globals.players[socket].pot = Globals.players[socket].pot + prize;
+
+        if(Globals.players[socket]) {
+          Globals.players[socket].pot = Globals.players[socket].pot + prize;
+        }
       }
     }
 
@@ -92,10 +95,26 @@ module.exports = function init(io) {
 
       io.emit('HALLOFFAME_UPDATE', Globals.hallOfFame);
 
-      io.emit('CHAT_MESSAGE_IN', {
-        username: 'Croupier',
-        body: `The winners of last round are: ${winners.join(', ')}`
-      });
+      const winners_names = [];
+
+      for(let n = winners.length - 1; n !== -1; n--) {
+        if(Globals.players[winners[n]]) {
+          winners_names.push(Globals.players[winners[n]].username);
+        }
+      }
+
+      if(winners_names.length) {
+        io.emit('CHAT_MESSAGE_IN', {
+          username: 'Croupier',
+          body: `The winners of last round are: ${winners_names.join(', ')}`
+        });
+      } else {
+        io.emit('CHAT_MESSAGE_IN', {
+          username: 'Croupier',
+          sys: true,
+          body: `Last round without winners!`
+        });
+      }
     }
 
     heatbeat();
