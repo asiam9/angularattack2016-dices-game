@@ -11,7 +11,7 @@ module.exports = function init(io) {
     endAt = new Date().getTime() + interval;
     const winners = [];
     const correctDices = [];
-    const correctDice = 1; // Math.floor(Math.random() * (MAX - MIN) + MIN); FIXME !
+    const correctDice = Math.floor(Math.random() * (MAX - MIN) + MIN);
 
     for(let i=3; i !== 0; i--) { // well... its CASINO^^
       correctDices.push(correctDice);
@@ -60,33 +60,37 @@ module.exports = function init(io) {
 
     if(_players.length) {
       _players.sort((a, b) => b.rounds - a.rounds);
-      const top5 = _players.slice(0, 5 || _players.length - 1);
+      const top5 = _players.slice(0, _players.length || 5);
 
-      for (let n = top5.length - 1; n !== -1; n--) {
-        for (let m = Globals.hallOfFame.length - 1; m !== -1; m--) {
-          if (top5[n].rounds > Globals.hallOfFame[m].rounds) {
+      for (var m = Globals.hallOfFame.length - 1; m !== -1; m--) {
+        for (var n = top5.length - 1; n !== -1; n--) {
+          if (top5[n].rounds >= Globals.hallOfFame[m].rounds) {
             let found = false;
 
             for (let o = Globals.hallOfFame.length - 1; o !== -1; o--) {
               if(top5[n].socket == Globals.hallOfFame[o].socket) {
                 found = true;
                 Globals.hallOfFame[o].rounds = top5[n].rounds;
+                top5.splice(n, 1);
+                break;
               }
             }
 
             if(!found) {
               Globals.hallOfFame.unshift(top5[n]);
+              top5.splice(n, 1);
             }
 
-            top5.splice(n, 1);
+            break;
           }
         }
       }
 
       Globals.hallOfFame = Globals.hallOfFame.sort((a, b) => b.rounds - a.rounds);
-      Globals.hallOfFame = Globals.hallOfFame.slice(0, 4);
+      Globals.hallOfFame = Globals.hallOfFame.slice(0, 5);
+      Globals.hallOfFame = Globals.hallOfFame.sort((a, b) => b.rounds - a.rounds);
 
-      console.log(Globals.hallOfFame);
+      io.emit('HALLOFFAME_UPDATE', Globals.hallOfFame);
     }
 
     heatbeat();

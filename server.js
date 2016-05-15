@@ -10,6 +10,7 @@ app.listen(1338);
 io.on('connection', function (socket) {
   const _players = Object.keys(Globals.players).map(key => Globals.players[key]);
   socket.emit('PLAYERS_LIST', _players);
+  socket.emit('HALLOFFAME_UPDATE', Globals.hallOfFame);
 
   socket.on('CHAT_MESSAGE_OUT', function (message) {
     if(!Globals.players[socket.id]) return;

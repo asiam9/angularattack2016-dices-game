@@ -15,6 +15,7 @@ import {UserService} from './services/user-service';
 import {PlayersService} from './services/players-service';
 import {DicesService} from './services/dices-service';
 import {BankService} from './services/bank-service';
+import {HallOfFameService} from './services/hallOfFame-service';
 
 const stateTransformer = (state) => {
     const newState = {};
@@ -41,5 +42,6 @@ bootstrap(AppComponent, [
     UserService,
     PlayersService,
     DicesService,
-    BankService
+    BankService,
+    HallOfFameService
 ]);

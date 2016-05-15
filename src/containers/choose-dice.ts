@@ -17,7 +17,7 @@ import {DicesService} from '../services/dices-service';
             <dice value="{{diceValue}}"></dice>
             <div class="fancy-circle"></div>
         </div>
-        <button (click)="betAtDice()" [disabled]="diceBet" class="betBtn">BET AT YOUR LUCK!</button>
+      <button (click)="betAtDice()" [disabled]="diceBet || !selectedDice" class="betBtn">BET AT YOUR LUCK!</button>
     `,
     styles: [require('./choose-dice.css')]
 })

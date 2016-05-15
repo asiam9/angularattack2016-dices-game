@@ -1,0 +1,1 @@
+export const HALL_OF_FAME_UPDATE = 'App/HALL_OF_FAME/UPDATE';
