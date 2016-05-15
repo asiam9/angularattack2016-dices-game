@@ -106,6 +106,7 @@ module.exports = function init(io) {
       if(winners_names.length) {
         io.emit('CHAT_MESSAGE_IN', {
           username: 'Croupier',
+          sys: true,
           body: `The winners of last round are: ${winners_names.join(', ')}`
         });
       } else {

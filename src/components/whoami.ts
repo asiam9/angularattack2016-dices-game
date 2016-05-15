@@ -8,7 +8,7 @@ import {IAppState} from '../app-state';
     pipes: [AsyncPipe],
     selector: 'dices-whoami',
     template: `
-        <h3><span class="material-icons">perm_identity</span> You: {{username$ | async}}</h3>
+        <h3><span class="material-icons">perm_identity</span> <small>You:</small> {{username$ | async}}</h3>
     `,
     styles: [require('./whoami.css')]
 })

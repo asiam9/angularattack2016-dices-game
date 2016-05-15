@@ -1,7 +1,7 @@
 :host {
     background: #19191A;
     display: block;
-    overflow-y: scroll;
-    height: 20.5rem;
+    overflow-y: auto;
+    height: 18.5rem;
     font-size: 1.4rem;
 }
