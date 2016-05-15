@@ -1,6 +1,18 @@
 :host {
     background: #121315;
-    padding: 2rem;
+    padding: 1.5rem 2rem 1rem 2rem;
     margin: 0 0 2rem;
     display: block;
+    position: relative;
+}
+
+:host div {
+    position: relative;
+    margin: 0 0 .5rem;
+}
+
+:host span {
+    top: 0;
+    right: 0;
+    position: absolute;
 }

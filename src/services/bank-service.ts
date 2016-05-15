@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {NgRedux} from 'ng2-redux';
 import {IAppState} from '../app-state';
-import {BANK_UPDATE} from '../constants/bank';
+import {BANK_UPDATE, BANK_POT_UPDATE} from '../constants/bank';
 import {SocketService} from '../services/socket-service';
 
 @Injectable()

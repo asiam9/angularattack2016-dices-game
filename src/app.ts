@@ -10,6 +10,7 @@ import {DicesColumnComponent} from './containers/column';
 import {DicesInfoComponent} from './components/info';
 import {NgRedux} from 'ng2-redux';
 import {IAppState} from './app-state';
+import {Observable} from 'rxjs';
 
 @Component({
     selector: 'my-app',
@@ -26,19 +27,19 @@ import {IAppState} from './app-state';
         </dices-column>
         <dices-choose-dice></dices-choose-dice>
         <dices-chat></dices-chat>
-        <p *ngIf="!userdata.username"><button (click)="showLoginModal()">START GAME!</button></p>
-        <login-form *ngIf="!userdata.username"></login-form>
+        <p *ngIf="!username"><button (click)="showLoginModal()">START GAME!</button></p>
+        <login-form *ngIf="!username"></login-form>
     `,
     encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
     /**ngIf="loginModal && "*/
-    private userdata;
+    private username: Observable<string>;
     private loginModal = false;
 
     constructor(ngRedux: NgRedux<IAppState>) {
-        ngRedux.select(n => n.user.get('userdata'))
-            .subscribe((user: any) => { this.userdata = user.toJS(); });
+        ngRedux.select(n => n.user.get('username'))
+            .subscribe((username: any) => { this.username = username; });
     }
 
     showLoginModal() {

@@ -14,14 +14,10 @@ export class DicesService {
         private socketService: SocketService,
         private ngRedux: NgRedux<IAppState>
     ){
-        this.socketService.socket.on('RESULTS', results => {
-            this.ngRedux.dispatch({
-                type: DICES_RESULTS,
-                payload: {
-                    results
-                }
+        ngRedux.select(n => n.user.get('socket'))
+            .subscribe(socket => {
+                this.socket = socket;
             });
-        });
 
         ngRedux.select(n => n.dices.get('endTime'))
             .subscribe(endTime => {
@@ -30,11 +26,6 @@ export class DicesService {
                         type: DICES_STATUS_WAITING_FOR_NEXT_ROUND
                     });
                 }
-            });
-
-        ngRedux.select(n => n.user.getIn(['userdata','socket']))
-            .subscribe(socket => {
-                this.socket = socket;
             });
 
         ngRedux.select(n => n.dices.get('diceBet'))
@@ -68,6 +59,15 @@ export class DicesService {
                     });
                 });
             });
+
+        this.socketService.socket.on('RESULTS', results => {
+            this.ngRedux.dispatch({
+                type: DICES_RESULTS,
+                payload: {
+                    results
+                }
+            });
+        });
     }
 
     betAtDice(diceValue) {

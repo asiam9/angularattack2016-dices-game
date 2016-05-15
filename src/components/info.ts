@@ -4,9 +4,9 @@ import {Component} from '@angular/core';
     selector: 'dices-info',
     template: `
         <h2>Whats going on?</h2>
-        <p><strong>Type the most repetitive dice in the next draw.</strong><br />
-        For the correct type total bank $$$ /winners count and bonus +$100,<br />
-        for wrong typings -$100.<br /><br />
+        <p><strong>Become THE DICE master!</strong></p>
+        <p>Type the most frequently occurring dice in the next draw.<br />
+        For correct bonus +$100, and if there is more than Yours bet: total bank $$$/winners.<br />
         Survive as long as You can! Good luck!</p>
     `,
     styles: [require('./info.css')]

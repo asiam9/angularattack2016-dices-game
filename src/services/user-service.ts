@@ -10,10 +10,10 @@ export class UserService {
         private socketService: SocketService,
         private ngRedux: NgRedux<IAppState>
     ){
-        this.socketService.socket.on('USER_LOGGED_IN', userdata => {
+        this.socketService.socket.on('USER_LOGGED_IN', payload => {
             this.ngRedux.dispatch({
                 type: USER_LOGGED_IN,
-                payload: userdata
+                payload
             });
         });
     }

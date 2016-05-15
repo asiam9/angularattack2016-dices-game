@@ -1,12 +1,13 @@
 import {Component} from '@angular/core';
 import {DicesPlayersComponent} from '../components/players';
 import {DicesBankComponent} from '../components/bank';
+import {DicesWhoamiComponent} from '../components/whoami';
 
 @Component({
     selector: 'dices-aside',
-    directives: [DicesPlayersComponent, DicesBankComponent],
+    directives: [DicesPlayersComponent, DicesBankComponent, DicesWhoamiComponent],
     template: `
-        <h2>Bank</h2>
+        <dices-whoami></dices-whoami>
         <dices-bank></dices-bank>
         <h2>Players</h2>
         <dices-players></dices-players>

@@ -1,5 +1,5 @@
 import {fromJS} from 'immutable';
-import {BANK_UPDATE} from '../constants/bank';
+import {BANK_UPDATE, BANK_POT_UPDATE} from '../constants/bank';
 
 const INITIAL_STATE = fromJS({
     bank: 0,
@@ -9,6 +9,10 @@ const INITIAL_STATE = fromJS({
 function bank(state = INITIAL_STATE, action: any = { type: '' }) {
     switch(action.type) {
         case BANK_UPDATE: {
+            return state.merge(action.payload);
+        }
+
+        case BANK_POT_UPDATE: {
             return state.merge(action.payload);
         }
 
