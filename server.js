@@ -69,10 +69,6 @@ io.on('connection', function (socket) {
   socket.on('disconnect', function() {
     if(!Globals.players[socket.id]) return;
 
-    io.emit('PLAYER_LEAVE', {
-      id: Globals.players[socket.id].id
-    });
-
     io.emit('CHAT_MESSAGE_IN', {
       username: 'Croupier',
       sys: true,
@@ -83,6 +79,6 @@ io.on('connection', function (socket) {
     delete Globals.players[socket.id];
 
     const _players = Object.keys(Globals.players).map(key => Globals.players[key]);
-    socket.emit('PLAYERS_LIST', _players);
+    io.emit('PLAYERS_LIST', _players);
   });
 });

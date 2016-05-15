@@ -6,7 +6,7 @@ const INITIAL_STATE = fromJS([]);
 function players(state = INITIAL_STATE, action: any = { type: '' }) {
     switch(action.type) {
         case PLAYERS_LIST: {
-            return state.merge(action.payload);
+            return fromJS(action.payload);
         }
         case PLAYERS_PLAYER_JOIN: {
             return state.push(action.payload);
