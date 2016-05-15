@@ -26,12 +26,13 @@
 }
 
 :host .username {
-    max-width: 13rem;
+    max-width: 12.5rem;
     text-overflow: ellipsis;
     overflow: hidden;
 }
 
 :host .pot small {
+    font-size: .75em;
     margin-right: .5rem;
 }
 

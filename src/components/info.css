@@ -4,7 +4,12 @@
 }
 
 :host h2 {
-    font-size: 2.3rem;
+    font-size: 2rem;
     margin: 0 0 2rem;
     color: #88898D;
+}
+
+:host h2 .material-icons {
+    padding: .1rem;
+    color: red;
 }

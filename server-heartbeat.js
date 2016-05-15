@@ -113,7 +113,7 @@ module.exports = function init(io) {
         io.emit('CHAT_MESSAGE_IN', {
           username: 'Croupier',
           sys: true,
-          body: `Last round without winners!`
+          body: `Last round ends with no winners!`
         });
       }
     }

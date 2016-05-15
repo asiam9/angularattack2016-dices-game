@@ -4,12 +4,17 @@
     margin: 0 0 2rem;
     display: block;
     position: relative;
-    border-top: 1px solid #AEAFB3;
 }
 
-:host div {
+:host .row {
     position: relative;
     margin: 0 0 .5rem;
+}
+
+:host .row:nth-child(1) {
+    border-bottom: 1px solid #2B2B2B;
+    padding: 0 0 1rem;
+    margin: 0 0 1rem;
 }
 
 :host span {
@@ -20,4 +25,14 @@
 
 :host small {
     font-size: 1.2rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+:host i {
+    margin: 0 .5rem 0 0;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 2rem;
+    color: #666;
 }

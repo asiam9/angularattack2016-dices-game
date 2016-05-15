@@ -5,7 +5,7 @@ import {ChatService} from '../services/chat-service';
     selector: 'dices-chat-form',
     template: `
         <form (submit)="sendMessage()">
-            <input placeholder="Type message..." type="text" [(ngModel)]="message" />
+            <input placeholder="Type a message..." type="text" [(ngModel)]="message" />
             <button type="submit">SEND</button>
         </form>
     `,

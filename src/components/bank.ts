@@ -9,8 +9,16 @@ import {BankService} from '../services/bank-service';
     pipes: [AsyncPipe],
     selector: 'dices-bank',
     template: `
-        <div class="row"><small>Your pot:</small> <span>&#36;{{pot$ | async}}</span></div>
-        <div class="row"><small>Bank:</small> <span>&#36;{{bank$ | async}}</span></div>
+        <div class="row">
+            <i class="material-icons">payment</i>
+            <small>Your Pot:</small>
+            <span>&#36;{{pot$ | async}}</span>
+        </div>
+        <div class="row">
+            <i class="material-icons">card_giftcard</i>
+            <small>Total Bank:</small>
+            <span>&#36;{{bank$ | async}}</span>
+        </div>
     `,
     styles: [require('./bank.css')]
 })
