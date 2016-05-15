@@ -4,10 +4,12 @@
     position: absolute;
     width: 300px;
     min-height: 100vh;
+    max-height: 100vh;
     background: #222327;
     color: #AEAFB3;
     padding: 2rem;
     overflow: hidden;
+    overflow-y: auto;
     text-overflow: ellipsis;
 }
 
